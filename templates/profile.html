@@ -3,11 +3,13 @@
 {% extends "base1.html" %}
 
 {% block body %}
-<h1 class="title">
-  Welcome, {{ name }}!
-</h1>
-<br>
+
 <div class="container my-3">
+  <h2 class="title">
+    <br>
+    Welcome, {{ name }}!
+  </h2>
+  <br>
   <h2>Add a Todo</h2>
   <form action="/profile" method="POST">
       <div class="mb-3">

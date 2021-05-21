@@ -31,6 +31,12 @@
                             <a href="{{ url_for('app.about') }}" class="navbar-item">
                                 About Us
                             </a>
+                            <a href="{{ url_for('app.privacy') }}" class="navbar-item">
+                                Privacy
+                            </a>
+                            <a href="{{ url_for('app.termsofuse') }}" class="navbar-item">
+                                Terms of use
+                            </a>
                             {% if not current_user.is_authenticated %}
                             <a href="{{ url_for('auth.login') }}" class="navbar-item">
                                 Login

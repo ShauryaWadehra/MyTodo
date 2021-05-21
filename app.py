@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request, redirect, Blueprint
+from flask import Flask, render_template, request, redirect, Blueprint, url_for
 from flask_sqlalchemy import SQLAlchemy
 from datetime import datetime
 from . import db
@@ -27,12 +27,20 @@ def delete(sno):
     db.session.commit()
     return redirect("/profile")
 
+@app.route("/complete/<int:sno>")
+def complete(sno):
+    todo = Todo.query.filter_by(sno=sno).first()
+    todo.complete = not todo.complete
+    db.session.commit()
+    return redirect("/profile")    
+
 @app.route('/about', methods = ['GET'])
 def about():
     return render_template('about.html')
-@app.route('/terms_of_use', methods = ['GET'])
-def terms_of_use():
-    return render_template('terms_of_use.html')
+@app.route('/termsofuse', methods = ['GET'])
+def termsofuse():
+    return render_template('termsofuse.html')
 @app.route('/privacy', methods = ['GET'])
 def privacy():
     return render_template('privacy.html')
+    

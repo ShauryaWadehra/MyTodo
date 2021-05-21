@@ -39,6 +39,7 @@
                       <th scope="col">SNo</th>
                       <th scope="col">Title</th>
                       <th scope="col">Description</th>
+                      <th scope="col">Status</th>
                       <th scope="col">Time</th>
                       <th scope="col">Actions</th>
                     </tr>
@@ -50,6 +51,11 @@
           <th scope="row">{{loop.index}}</th>
           <td>{{todo.title}}</td>
           <td>{{todo.desc}}</td>
+          {% if todo.complete == False %}
+          <td><a href="/complete/{{ todo.sno }}" type = "button" class = "btn btn-outline-danger btn-sm mx-1">Not Complete</a></td>
+          {% else %}
+          <td><a href="/complete/{{ todo.sno }}" type = "button" class = "btn btn-outline-success btn-sm mx-1">Completed</a></td>
+          {% endif %}
           <td>{{todo.date_created}}</td>
           <td>
             <a href="/update/{{todo.sno}}" type="button" class="btn btn-outline-dark btn-sm mx-1">Update</button>
